@@ -1,0 +1,251 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "CookBook Server",
+    "description": "CookBook server for UUN BCAA project"
+  },
+  "host": "localhost:8000",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Ingredients",
+      "description": "API for ingredients in the system"
+    }
+  ],
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/ingredient": {
+      "get": {
+        "tags": ["Ingredients"],
+        "summary": "Get all ingredients in system",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Ingredient"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Ingredients"],
+        "summary": "Create new ingredient in system",
+        "parameters": [
+          {
+            "name": "ingredient",
+            "in": "body",
+            "description": "Ingredient that we want to create",
+            "schema": {
+              "$ref": "#/definitions/CreateIngredient"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "New ingredient is created",
+            "schema": {
+              "$ref": "#/definitions/Ingredient"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/Ingredients"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Ingredients"
+            }
+          }
+        }
+      }
+    },
+    "/ingredient/{id}": {
+      "get": {
+        "tags": ["Ingredients"],
+        "summary": "Get requested ingredient by ID",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Ingredient"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Ingredients"],
+        "summary": "Delete ingredient by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Ingredient that we want to create",
+            "schema": {
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Ingredient is deleted",
+            "schema": {
+              "example": "{}"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["Ingredients"],
+        "summary": "Update ingredient by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Ingredient that we want to update",
+            "schema": {
+            }
+          },
+          {
+            "name": "ingredient",
+            "in": "body",
+            "description": "Ingredient that we want to update",
+            "schema": {
+              "$ref": "#/definitions/CreateIngredient"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Ingredient is updated",
+            "schema": {
+              "$ref": "#/definitions/Ingredient"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Ingredient": {
+      "required": ["name", "unit"],
+      "properties": {
+        "_id": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "unit": {
+          "type": "string",
+          "enum": ["g", "ml", "ks"],
+          "description": "allowed values are only `g` for grams, `ml` for millilitre and `ks` for piece"
+        },
+        "name": {
+          "type": "string"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "Ingredients": {
+      "type": "array",
+      "$ref": "#/definitions/Ingredient"
+    },
+    "CreateIngredient": {
+      "required": ["name", "unit"],
+      "properties": {
+        "unit": {
+          "type": "string",
+          "enum": ["g", "ml"],
+          "description": "allowed values are only `g` for grams and `ml` for millilitre"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "ErrorResponse": {
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "parameters": {
+          "type": "string"
+        },
+        "reason": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
