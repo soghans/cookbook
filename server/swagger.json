@@ -11,6 +11,10 @@
     {
       "name": "Ingredients",
       "description": "API for ingredients in the system"
+    },
+    {
+      "name": "Recipes",
+      "description": "API for recipes in the system"
     }
   ],
   "schemes": ["http"],
@@ -78,10 +82,81 @@
         }
       }
     },
+    "/recipe": {
+      "get": {
+        "tags": ["Recipes"],
+        "summary": "Get all ingredients in system",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Recipe"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Recipes"],
+        "summary": "Create new recipe in system",
+        "parameters": [
+          {
+            "name": "ingredient",
+            "in": "body",
+            "description": "Ingredient that we want to create",
+            "schema": {
+              "$ref": "#/definitions/CreateRecipe"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "New ingredient is created",
+            "schema": {
+              "$ref": "#/definitions/Recipe"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
     "/ingredient/{id}": {
       "get": {
         "tags": ["Ingredients"],
         "summary": "Get requested ingredient by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Ingredient that we want to get",
+            "schema": {
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -122,7 +197,6 @@
             }
           }
         ],
-        "produces": ["application/json"],
         "responses": {
           "200": {
             "description": "Ingredient is deleted",
@@ -199,7 +273,7 @@
     "Ingredient": {
       "required": ["name", "unit"],
       "properties": {
-        "_id": {
+        "id": {
           "type": "string",
           "uniqueItems": true
         },
@@ -230,6 +304,81 @@
           "description": "allowed values are only `g` for grams and `ml` for millilitre"
         },
         "name": {
+          "type": "string"
+        }
+      }
+    },
+    "RecipeIngredient": {
+      "required": ["id", "amount"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "amount": {
+          "type": "number"
+        },
+        "name": {
+          "type": "string"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "RecipeIngredients": {
+      "type": "array",
+      "$ref": "#/definitions/RecipeIngredient"
+    },
+    "Recipe": {
+      "required": ["author", "ingredients", "category", "procedure", "title"],
+      "properties": {
+        "author": {
+          "type": "string"
+        },
+        "category": {
+          "type": "string",
+          "enum": ["starter", "soup", "main course", "dessert", "snack"]
+        },
+        "description": {
+          "type": "string"
+        },
+        "image": {
+          "type": "string"
+        },
+        "procedure": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        }
+      }
+    },
+    "CreateRecipe": {
+      "required": ["author", "ingredients", "category", "procedure", "title"],
+      "properties": {
+        "author": {
+          "type": "string"
+        },
+        "category": {
+          "type": "string",
+          "enum": ["starter", "soup", "main course", "dessert", "snack"]
+        },
+        "description": {
+          "type": "string"
+        },
+        "image": {
+          "type": "string"
+        },
+        "ingredients": {
+          "type": "array",
+          "$ref": "#/definitions/RecipeIngredients"
+        },
+        "procedure": {
+          "type": "string"
+        },
+        "title": {
           "type": "string"
         }
       }

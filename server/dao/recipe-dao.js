@@ -1,7 +1,14 @@
 "use strict";
 const fs = require("fs");
 const path = require("path");
-
+const RecipeIngredientDao = require("./recipe-ingredient-dao");
+let riDao = new RecipeIngredientDao(
+    path.join(__dirname, "..", "storage", "recipe_ingredients.json")
+);
+const IngredientDao = require("./ingredient-dao");
+let iDao = new IngredientDao(
+    path.join(__dirname, "..", "storage", "ingredients.json")
+);
 const crypto = require("crypto");
 
 const rf = fs.promises.readFile;
@@ -18,8 +25,30 @@ class RecipeDao {
 
   async createRecipe(recipe) {
     let recipeList = await this._loadAllRecipes();
+    const ingredientList = []
+    if (recipe.ingredients.length < 1) {
+      throw new Error( `recipe must have at least one ingredient`);
+    }
+    for (let i = 0; i < recipe.ingredients.length; i++) {
+      let ingredient = await iDao.getIngredient(recipe.ingredients[i].id)
+      ingredient.amount = recipe.ingredients[i].amount
+      ingredientList.push(ingredient)
+      if (!ingredient) {
+        throw new Error( `ingredient with given id ${recipe.ingredients[i].id} not found`);
+      }
+    }
     recipe.id = crypto.randomUUID();
     recipe.created_at = new Date()
+    for (let i = 0; i < ingredientList.length; i++) {
+      let ingredientRecipe = {}
+      ingredientRecipe.id = crypto.randomUUID()
+      ingredientRecipe.created_at = new Date()
+      ingredientRecipe.recipe_id = recipe.id
+      ingredientRecipe.ingredient_id = ingredientList[i].id
+      ingredientRecipe.amount = ingredientList[i].amount
+      await riDao.createRecipeIngredient(ingredientRecipe)
+    }
+    delete recipe.ingredients
     recipeList.push(recipe);
     await wf(
       this._getStorageLocation(),
@@ -40,7 +69,7 @@ class RecipeDao {
     );
     if (recipeIndex < 0) {
       throw new Error(
-        `ingredient with given id ${recipe.id} not found`
+        `recipe with given id ${recipe.id} not found`
       );
     } else {
       recipeList[recipeIndex] = {

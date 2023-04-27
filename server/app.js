@@ -3,7 +3,7 @@ const express = require("express");
 const cors = require("cors");
 
 const ingredientRouter = require("./controller/ingredient-controller");
-// const classroomRouter = require("./controller/classroom-controller");
+const recipeRouter = require("./controller/recipe-controller");
 // const subjectRouter = require("./controller/subject-controller");
 // const gradeRouter = require("./controller/grade-controller");
 
@@ -27,7 +27,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/ingredient", ingredientRouter);
-// app.use("/classroom", classroomRouter);
+app.use("/recipe", recipeRouter);
 // app.use("/subject", subjectRouter);
 // app.use("/grade", gradeRouter);
 

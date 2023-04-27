@@ -1,1 +1,9 @@
-[]
+[
+  {
+    "id": "c84e8130-ffd5-4b8f-96e0-66fdc4e1c3cb",
+    "created_at": "2023-04-26T06:52:43.671Z",
+    "recipe_id": "f50d3c9a-bfd0-4479-94e7-60ef61d744a9",
+    "ingredient_id": "f774fe0c-74ae-41d1-91db-ab2cf8d48b2e",
+    "amount": 1.9
+  }
+]

@@ -29,9 +29,9 @@ class IngredientDao {
   }
 
   async getIngredient(id) {
-    let ingredient = await this._loadAllIngredients();
-    const result = ingredient.find((b) => b.id === id);
-    return result;
+    let ingredients = await this._loadAllIngredients();
+    return ingredients.find((b) => b.id === id);
+
   }
 
   async updateIngredient(ingredient) {

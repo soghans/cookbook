@@ -12,7 +12,7 @@ let schema = {
         category: { type: "string" },
         description: { type: "string" },
         image: { type: "string" },
-        ingredients: {type: "array", uniqueItems: true, items: { type: "string" } },
+        ingredients: {type: "array", items: { type: "object" }, uniqueItems: true },
         procedure: { type: "string" },
         title: { type: "string" },
     },
