@@ -74,22 +74,22 @@ class RecipeIngredientDao {
 
   async listRecipeIngredientsByRecipeId(recipeId) {
     let recipeIngredient = await this._loadAllRecipeIngredients();
-    return recipeIngredient.findIndex((b) => b.id === id);
+    return recipeIngredient.filter(i => i.recipe_id === recipeId);
   }
 
   async listRecipeIngredientsByIngredientId(ingredientId) {
     let recipeIngredient = await this._loadAllRecipeIngredients();
-    return recipeIngredient.findIndex((b) => b.id === id);
+    return recipeIngredient.filter(i => i.ingredient_id === ingredientId);
   }
 
   async _loadAllRecipeIngredients() {
-    let recipeList;
+    let recipeIngredientList;
     try {
-      recipeList = JSON.parse(await rf(this._getStorageLocation()));
+      recipeIngredientList = JSON.parse(await rf(this._getStorageLocation()));
     } catch (e) {
       if (e.code === "ENOENT") {
         console.info("No storage found, initializing new one...");
-        recipeList = [];
+        recipeIngredientList = [];
       } else {
         throw new Error(
           "Unable to read from storage. Wrong data format. " +
@@ -97,7 +97,7 @@ class RecipeIngredientDao {
         );
       }
     }
-    return recipeList;
+    return recipeIngredientList;
   }
 
   _getStorageLocation() {

@@ -1,14 +1,43 @@
 [
   {
     "unit": "g",
-    "name": "flour",
+    "name": "Mouka",
     "id": "f774fe0c-74ae-41d1-91db-ab2cf8d48b2e",
     "created_at": "2023-04-25T07:24:31.105Z"
   },
   {
-    "unit": "ml",
-    "name": "carrot",
-    "id": "6a109d7b-b972-4f89-bcbf-1dd249c1338e",
-    "created_at": "2023-04-25T09:55:52.013Z"
+    "id": "e065dfda-bcdf-4dc8-bd22-3acd50df9af9",
+    "name": "Brokolice",
+    "created_at": "2023-05-31T22:33:58.909Z"
+  },
+  {
+    "id": "98ecc85b-3bbd-4721-bad0-1bb8a5d71562",
+    "name": "Párek",
+    "created_at": "2023-05-31T22:53:30.222Z"
+  },
+  {
+    "id": "fd385736-5dc6-4447-a859-b36c7d962550",
+    "name": "Kokos",
+    "created_at": "2023-05-31T23:05:21.153Z"
+  },
+  {
+    "id": "21793aee-bf27-41b4-95fb-7094687afd10",
+    "name": "Kopr",
+    "created_at": "2023-05-31T23:05:37.014Z"
+  },
+  {
+    "id": "e232401d-eb12-4a06-8f53-c1451d2b0258",
+    "name": "Brouk",
+    "created_at": "2023-05-31T23:50:06.334Z"
+  },
+  {
+    "id": "add5acab-0a41-4645-89ab-c2d39f37ce3f",
+    "name": "Maso",
+    "created_at": "2023-05-31T23:52:37.899Z"
+  },
+  {
+    "id": "e9bd1177-a4f8-4d52-ae0d-e25865d74f84",
+    "name": "koza",
+    "created_at": "2023-05-31T23:54:16.886Z"
   }
 ]

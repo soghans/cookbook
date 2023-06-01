@@ -5,8 +5,14 @@ let dao = new RecipeDao(
 );
 
 async function ListAbl(req, res) {
+    const withIngredient = req.query.ingredients
     try {
-        const recipeList = await dao.listRecipes();
+        let recipeList = []
+        if (withIngredient && withIngredient !== 'false') {
+            recipeList = await dao.listRecipesWithIngredient();
+        } else {
+            recipeList = await dao.listRecipes();
+        }
         res.json(recipeList);
     } catch (e) {
         console.log(e);

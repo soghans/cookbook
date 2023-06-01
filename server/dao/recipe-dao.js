@@ -58,8 +58,15 @@ class RecipeDao {
   }
 
   async getRecipe(id) {
-    let ingredient = await this._loadAllRecipes();
-    return ingredient.find((b) => b.id === id);
+    let recipes = await this._loadAllRecipes();
+    let recipe = recipes.find((b) => b.id === id);
+    const riList = await riDao.listRecipeIngredientsByRecipeId(recipe.id)
+    let ingredientList = []
+    for (let i = 0; i < riList.length; i++) {
+      ingredientList[i] = await iDao.getIngredient(riList[i].ingredient_id)
+    }
+     recipe.ingredients = ingredientList
+    return recipe
   }
 
   async updateRecipe(recipe) {
@@ -95,6 +102,15 @@ class RecipeDao {
       JSON.stringify(recipeList, null, 2)
     );
     return {};
+  }
+
+  async listRecipesWithIngredient() {
+    let recipes = await this._loadAllRecipes();
+    let recipesList = []
+    for (let i = 0; i < recipes.length; i++) {
+      recipesList[i] = await this.getRecipe(recipes[i].id)
+    }
+    return recipesList
   }
 
   async listRecipes() {

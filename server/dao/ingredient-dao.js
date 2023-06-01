@@ -17,7 +17,7 @@ class IngredientDao {
   }
 
   async createIngredient(ingredient) {
-    let ingredientList = await this._loadAllIngredients();
+    let ingredientList = await this.loadAllIngredients();
     ingredient.id = crypto.randomUUID();
     ingredient.created_at = new Date()
     ingredientList.push(ingredient);
@@ -29,13 +29,13 @@ class IngredientDao {
   }
 
   async getIngredient(id) {
-    let ingredients = await this._loadAllIngredients();
+    let ingredients = await this.loadAllIngredients();
     return ingredients.find((b) => b.id === id);
 
   }
 
   async updateIngredient(ingredient) {
-    let ingredientList = await this._loadAllIngredients();
+    let ingredientList = await this.loadAllIngredients();
     const ingredientIndex = ingredientList.findIndex(
       (b) => b.id === ingredient.id
     );
@@ -57,7 +57,7 @@ class IngredientDao {
   }
 
   async deleteIngredient(id) {
-    let ingredientList = await this._loadAllIngredients();
+    let ingredientList = await this.loadAllIngredients();
     const ingredientIndex = ingredientList.findIndex((b) => b.id === id);
     if (ingredientIndex >= 0) {
       ingredientList.splice(ingredientIndex, 1);
@@ -70,10 +70,10 @@ class IngredientDao {
   }
 
   async listIngredients() {
-    return await this._loadAllIngredients();
+    return await this.loadAllIngredients();
   }
 
-  async _loadAllIngredients() {
+  async loadAllIngredients() {
     let ingredientList;
     try {
       ingredientList = JSON.parse(await rf(this._getStorageLocation()));

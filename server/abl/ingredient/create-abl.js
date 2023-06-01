@@ -9,9 +9,8 @@ let schema = {
     type: "object",
     properties: {
         name: { type: "string" },
-        unit: { type: "string",  enum: ["g", "ml", "ks"] },
     },
-    required: ["name", "unit"],
+    required: ["name"],
 };
 
 async function CreateAbl(req, res) {

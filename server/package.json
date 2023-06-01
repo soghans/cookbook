@@ -18,13 +18,13 @@
   },
   "homepage": "https://github.com/hajekm/cookbook#readme",
   "dependencies": {
-    "swagger-ui-express": "^4.6.2",
     "ajv": "^8.10.0",
     "axios": "^0.26.1",
     "busboy": "^1.5.0",
     "cors": "^2.8.5",
     "express": "^4.17.3",
     "form-data": "^4.0.0",
-    "neat-csv": "^6.0.1"
+    "neat-csv": "^6.0.1",
+    "swagger-ui-express": "^4.6.2"
   }
 }

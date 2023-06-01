@@ -8,5 +8,55 @@
     "title": "knedlo vepro",
     "id": "f50d3c9a-bfd0-4479-94e7-60ef61d744a9",
     "created_at": "2023-04-26T06:52:43.670Z"
+  },
+  {
+    "author": "Milan",
+    "category": "dessert",
+    "description": "jak moc dobre to je",
+    "image": "url",
+    "procedure": "csidjcij isdhc oishcoi iosdjcoijdsoic",
+    "title": "zmrzka",
+    "id": "d7de5aea-9aba-4328-ae9e-b8492c884724",
+    "created_at": "2023-05-29T20:24:28.726Z"
+  },
+  {
+    "author": "Milan",
+    "category": "snack",
+    "description": "jak moc dobre to je",
+    "image": "url",
+    "procedure": "csidjcij isdhc oishcoi iosdjcoijdsoic",
+    "title": "hot dog",
+    "id": "75b0d30d-f963-409e-b5b4-93f8b7e28c63",
+    "created_at": "2023-05-29T20:24:46.044Z"
+  },
+  {
+    "author": "Milan",
+    "category": "soup",
+    "description": "jak moc dobre to je",
+    "image": "url",
+    "procedure": "csidjcij isdhc oishcoi iosdjcoijdsoic",
+    "title": "kulajda",
+    "id": "f4a7ed83-13d3-41b0-880b-01fc78f837fb",
+    "created_at": "2023-05-29T20:25:07.057Z"
+  },
+  {
+    "author": "Milan",
+    "category": "main course",
+    "description": "jak moc dobre to je",
+    "image": "url",
+    "procedure": "csidjcij isdhc oishcoi iosdjcoijdsoic",
+    "title": "jitrnice",
+    "id": "36cdc6a5-5e39-400a-a0b7-07b0097f1704",
+    "created_at": "2023-05-29T20:25:25.102Z"
+  },
+  {
+    "author": "Milan",
+    "category": "drink",
+    "description": "jak moc dobre to je",
+    "image": "url",
+    "procedure": "csidjcij isdhc oishcoi iosdjcoijdsoic",
+    "title": "martini",
+    "id": "565aaf24-e38a-4457-9a75-4f7e5b2b7a25",
+    "created_at": "2023-05-30T06:44:44.599Z"
   }
 ]
