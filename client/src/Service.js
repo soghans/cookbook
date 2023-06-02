@@ -1,7 +1,7 @@
 const url = "http://localhost:8000";
 
 export class CookService {
-  async getRecipe(id) {
+  static getRecipe(id) {
     return fetch(`${url}/recipe/${id}`).then((res) => res.json());
   }
 

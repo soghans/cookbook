@@ -4,48 +4,55 @@
     "created_at": "2023-04-26T06:52:43.671Z",
     "recipe_id": "f50d3c9a-bfd0-4479-94e7-60ef61d744a9",
     "ingredient_id": "f774fe0c-74ae-41d1-91db-ab2cf8d48b2e",
-    "amount": 1.9
+    "unit": "g",
+    "amount": 10
   },
   {
     "id": "849930f5-3162-4bc3-aa8c-eefd952b9e6c",
     "created_at": "2023-05-29T19:36:57.569Z",
     "recipe_id": "c6510ec3-80c7-482f-97f6-8760dad0e929",
     "ingredient_id": "6a109d7b-b972-4f89-bcbf-1dd249c1338e",
-    "amount": 10
+    "amount": 10,
+    "unit": "g"
   },
   {
     "id": "4e76d0c1-dc7a-4455-a398-be35f15ae4c5",
     "created_at": "2023-05-29T20:24:28.726Z",
     "recipe_id": "d7de5aea-9aba-4328-ae9e-b8492c884724",
     "ingredient_id": "6a109d7b-b972-4f89-bcbf-1dd249c1338e",
-    "amount": 10
+    "amount": 10,
+    "unit": "g"
   },
   {
     "id": "3956b379-6884-4671-8644-a95a9207d392",
     "created_at": "2023-05-29T20:24:46.044Z",
     "recipe_id": "75b0d30d-f963-409e-b5b4-93f8b7e28c63",
     "ingredient_id": "6a109d7b-b972-4f89-bcbf-1dd249c1338e",
-    "amount": 10
+    "amount": 10,
+    "unit": "g"
   },
   {
     "id": "5a6f536e-c985-42b4-9b32-7827958428b9",
     "created_at": "2023-05-29T20:25:07.058Z",
     "recipe_id": "f4a7ed83-13d3-41b0-880b-01fc78f837fb",
     "ingredient_id": "6a109d7b-b972-4f89-bcbf-1dd249c1338e",
-    "amount": 10
+    "amount": 10,
+    "unit": "g"
   },
   {
     "id": "49e52944-6f9c-46e6-90e1-c879cf8649c4",
     "created_at": "2023-05-29T20:25:25.103Z",
     "recipe_id": "36cdc6a5-5e39-400a-a0b7-07b0097f1704",
     "ingredient_id": "6a109d7b-b972-4f89-bcbf-1dd249c1338e",
-    "amount": 10
+    "amount": 10,
+    "unit": "g"
   },
   {
     "id": "63b273bc-eed0-4cc5-8ad5-54685abc075c",
     "created_at": "2023-05-30T06:44:44.599Z",
     "recipe_id": "565aaf24-e38a-4457-9a75-4f7e5b2b7a25",
     "ingredient_id": "6a109d7b-b972-4f89-bcbf-1dd249c1338e",
-    "amount": 10
+    "amount": 10,
+    "unit": "g"
   }
 ]

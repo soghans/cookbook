@@ -66,6 +66,8 @@ class RecipeDao {
     let ingredientList = []
     for (let i = 0; i < riList.length; i++) {
       ingredientList[i] = await iDao.getIngredient(riList[i].ingredient_id)
+      ingredientList[i].amount = riList[i].amount;
+      ingredientList[i].unit = riList[i].unit;
     }
      recipe.ingredients = ingredientList
     return recipe
