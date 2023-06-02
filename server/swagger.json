@@ -403,16 +403,11 @@
   },
   "definitions": {
     "Ingredient": {
-      "required": ["name", "unit"],
+      "required": ["name"],
       "properties": {
         "id": {
           "type": "string",
           "uniqueItems": true
-        },
-        "unit": {
-          "type": "string",
-          "enum": ["g", "ml", "ks"],
-          "description": "allowed values are only `g` for grams, `ml` for millilitre and `ks` for piece"
         },
         "name": {
           "type": "string"
@@ -428,20 +423,15 @@
       "$ref": "#/definitions/Ingredient"
     },
     "CreateIngredient": {
-      "required": ["name", "unit"],
+      "required": ["name"],
       "properties": {
-        "unit": {
-          "type": "string",
-          "enum": ["g", "ml", "ks"],
-          "description": "allowed values are only `g` for grams and `ml` for millilitre"
-        },
         "name": {
           "type": "string"
         }
       }
     },
     "RecipeIngredient": {
-      "required": ["id", "amount"],
+      "required": ["id", "amount", "unit"],
       "properties": {
         "id": {
           "type": "string",
@@ -452,6 +442,11 @@
         },
         "name": {
           "type": "string"
+        },
+        "unit": {
+          "type": "string",
+          "enum": ["g", "ml", "pcs"],
+          "description": "allowed values are only `g` for grams and `ml` for millilitre"
         },
         "created_at": {
           "type": "string",

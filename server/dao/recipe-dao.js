@@ -32,6 +32,7 @@ class RecipeDao {
     for (let i = 0; i < recipe.ingredients.length; i++) {
       let ingredient = await iDao.getIngredient(recipe.ingredients[i].id)
       ingredient.amount = recipe.ingredients[i].amount
+      ingredient.unit = recipe.ingredients[i].unit
       ingredientList.push(ingredient)
       if (!ingredient) {
         throw new Error( `ingredient with given id ${recipe.ingredients[i].id} not found`);
@@ -46,6 +47,7 @@ class RecipeDao {
       ingredientRecipe.recipe_id = recipe.id
       ingredientRecipe.ingredient_id = ingredientList[i].id
       ingredientRecipe.amount = ingredientList[i].amount
+      ingredientRecipe.unit = ingredientList[i].unit
       await riDao.createRecipeIngredient(ingredientRecipe)
     }
     delete recipe.ingredients
