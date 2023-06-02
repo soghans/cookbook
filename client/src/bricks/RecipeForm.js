@@ -38,6 +38,7 @@ function RecipeForm(props) {
       validationSchema={Yup.object({
         author: Yup.string()
           .min(3, "Musí obsahovat alespoň 3 znaky")
+          .max(64, "Musí obsahovat maximálně 64 znaků")
           .required("Povinné pole"),
         category: Yup.string()
           .oneOf(
@@ -60,7 +61,7 @@ function RecipeForm(props) {
         //     ),
         // }),
         procedure: Yup.string()
-          .max(20, "Musí obsahovat alespoň 3 znaky")
+          .min(3, "Musí obsahovat alespoň 3 znaky")
           .required("Povinné pole"),
         title: Yup.string()
           .min(3, "Musí obsahovat alespoň 3 znaky")
