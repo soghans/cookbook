@@ -278,13 +278,13 @@
     "/recipe/{id}": {
       "get": {
         "tags": ["Recipes"],
-        "summary": "Get requested ingredient by ID",
+        "summary": "Get requested recipe by ID",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "description": "Ingredient that we want to get",
+            "description": "Recipe that we want to get",
             "schema": {
             }
           }
@@ -318,20 +318,20 @@
       },
       "delete": {
         "tags": ["Recipes"],
-        "summary": "Delete ingredient by ID",
+        "summary": "Delete recipe by ID",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "description": "Ingredient that we want to create",
+            "description": "Recipe that we want to create",
             "schema": {
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "Ingredient is deleted",
+            "description": "Recipe is deleted",
             "schema": {
               "example": "{}"
             }
@@ -352,13 +352,13 @@
       },
       "put": {
         "tags": ["Recipes"],
-        "summary": "Update ingredient by ID",
+        "summary": "Update recipe by ID",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "description": "Ingredient that we want to update",
+            "description": "Recipe that we want to update",
             "schema": {
             }
           },
@@ -374,7 +374,7 @@
         "produces": ["application/json"],
         "responses": {
           "200": {
-            "description": "Ingredient is updated",
+            "description": "Recipe is updated",
             "schema": {
               "$ref": "#/definitions/Ingredient"
             }

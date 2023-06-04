@@ -8,13 +8,13 @@ let dao = new RecipeDao(
 let schema = {
     type: "object",
     properties: {
-        author: { type: "string" },
+        author: { type: "string", minLength: 3, maxLength: 64 },
         category: { type: "string" },
-        description: { type: "string" },
+        description: { type: "string", maxLength: 160 },
         image: { type: "string" },
-        ingredients: {type: "array", items: { type: "object" }, uniqueItems: true },
-        procedure: { type: "string" },
-        title: { type: "string" },
+        ingredients: {type: "array", items: { type: "object" }, uniqueItems: true, minItems: 1 },
+        procedure: { type: "string", minLength: 3 },
+        title: { type: "string", minLength:3, maxLength: 64 },
     },
     required: ["author", "ingredients", "category", "procedure", "title"],
 };

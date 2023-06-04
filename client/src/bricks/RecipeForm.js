@@ -32,7 +32,16 @@ function RecipeForm(props) {
   }, []);
 
   const customBase64Uploader = async (event) => {
-    setImage(event.files[0]);
+    // convert file to base64 encoded
+    const file = event.files[0];
+    const reader = new FileReader();
+    let blob = await fetch(file.objectURL).then((r) => r.blob()); //blob:url
+
+    reader.readAsDataURL(blob);
+
+    reader.onloadend = function () {
+      const base64data = reader.result;
+    };
   };
 
   const ingredientPanel = (i) => {
@@ -148,6 +157,7 @@ function RecipeForm(props) {
             if (res.status >= 400) {
               console.log(res.json());
             } else {
+              document.getElementById("new-recipe-dialog").close();
             }
           });
           setSubmitting(false);
@@ -158,13 +168,15 @@ function RecipeForm(props) {
         <div className="flex justify-content-center">
           <Form className="flex-column gap-2">
             <div className="grid">
-              <div className="col-12">
+              <div className="col-12 mb-3">
                 <FileUpload
                   mode="basic"
                   name="image"
                   accept="image/*"
-                  maxFileSize={1000000}
-                  onSelect={(event) => customBase64Uploader(event)}
+                  url="api/upload/"
+                  customUpload
+                  chooseLabel="Nahrát obrázek"
+                  uploadHandler={(event) => customBase64Uploader(event)}
                 />
               </div>
               <div className="col-6">

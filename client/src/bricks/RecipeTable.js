@@ -60,8 +60,8 @@ function RecipeTable() {
         setRecipe(emptyRecipe);
         toast.current.show({
           severity: "success",
-          summary: "Successful",
-          detail: "Recipe Deleted",
+          summary: "Úspěch",
+          detail: "Recept smazán",
           life: 3000,
         });
       }
@@ -267,6 +267,11 @@ function RecipeTable() {
             sortable
             style={{ minWidth: "12rem" }}
           ></Column>
+          {/*<Column*/}
+          {/*  field="image"*/}
+          {/*  header="Obrázek"*/}
+          {/*  body={imageBodyTemplate}*/}
+          {/*></Column>*/}
           <Column
             field="title"
             header="Název"
@@ -284,11 +289,6 @@ function RecipeTable() {
             header="Datum"
             sortable
             style={{ minWidth: "16rem" }}
-          ></Column>
-          <Column
-            field="image"
-            header="Obrázek"
-            body={imageBodyTemplate}
           ></Column>
           <Column
             field="category"
