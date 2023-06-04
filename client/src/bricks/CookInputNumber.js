@@ -1,30 +1,23 @@
-import { Dropdown } from "primereact/dropdown";
 import { classNames } from "primereact/utils";
 import React from "react";
 import { useField } from "formik";
+import { InputNumber } from "primereact/inputnumber";
 
-const CategorySelect = ({ label, ...props }) => {
+const CookInputNumber = ({ label, ...props }) => {
   const [field, meta] = useField(props);
-  const categories = [
-    { name: "Dezert", code: "dessert" },
-    { name: "Hlavní chod", code: "main course" },
-    { name: "Koktejl", code: "drink" },
-    { name: "Polévka", code: "soup" },
-    { name: "Předkrm", code: "starter" },
-    { name: "Svačina", code: "snack" },
-  ];
   return (
     <>
       <span className="p-float-label">
-        <Dropdown
-          inputId={props.id}
+        <InputNumber
+          id={props.id}
           name={props.name}
-          options={categories}
-          optionLabel="name"
-          optionValue="code"
+          min={0}
+          max={9999}
+          minFractionDigits={0}
+          maxFractionDigits={2}
           {...field}
           {...props}
-          className={classNames("w-full md:w-14rem", {
+          className={classNames({
             "p-invalid": !!(meta.touched && meta.error),
           })}
         />
@@ -39,4 +32,4 @@ const CategorySelect = ({ label, ...props }) => {
   );
 };
 
-export default CategorySelect;
+export default CookInputNumber;

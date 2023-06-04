@@ -1,29 +1,70 @@
-import React, { useState } from "react";
-import { Formik, Form } from "formik";
+import React, { useEffect, useState } from "react";
+import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import { Button } from "primereact/button";
 import { FileUpload } from "primereact/fileupload";
 import { isFileCorrectType, isFileTooBig } from "../helpers/validation";
-import ReactCrop from "react-image-crop";
 import "react-image-crop/dist/ReactCrop.css";
 import CookInput from "./CookInput";
 import CookTextArea from "./CookTextArea";
 import CategorySelect from "./CategorySelect";
-import CookImgCrop from "./CookImgCrop";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSave } from "@fortawesome/free-solid-svg-icons";
-function RecipeForm(props) {
-  // const [crop, setCrop] = useState({
-  //   unit: "px", // Can be 'px' or '%'
-  //   x: 0,
-  //   y: 0,
-  //   width: 400,
-  //   height: 300,
-  // });
+import { faPlus, faSave } from "@fortawesome/free-solid-svg-icons";
+import { CookService } from "../Service";
+import UnitSelect from "./UnitSelect";
+import IngredientSelect from "./IngredientSelect";
 
-  const onUpload = () => {
-    alert("uploaded");
+function RecipeForm(props) {
+  const [ingredients, setIngredients] = useState([]);
+  const [ingredientsInputs, setIngredientsInputs] = useState([]);
+  const [recipe, setRecipe] = useState(null);
+  const [recipeIngredients, setRecipeIngredients] = useState(["1", "2", "3"]);
+  const [image, setImage] = useState(null);
+
+  useEffect(() => {
+    CookService.getIngredients().then((data) => setIngredients(data));
+    if (props.recipe.id) {
+      CookService.getRecipe(props.recipe.id).then((data) => {
+        setRecipe(data);
+        setRecipeIngredients(recipe.ingredients);
+      });
+    }
+  }, []);
+
+  const customBase64Uploader = async (event) => {
+    setImage(event.files[0]);
   };
+
+  const ingredientPanel = (i) => {
+    return (
+      <>
+        <div className="col-4">
+          <IngredientSelect
+            id={"ingredients[" + i + "].id"}
+            name={"ingredients[" + i + "].id"}
+            options={ingredients}
+            label="Ingredience"
+          />
+        </div>
+        <div className="col-4">
+          <CookInput
+            id={"ingredients[" + i + "].amount"}
+            name={"ingredients[" + i + "].amount"}
+            keyfilter="num"
+            label="Množství"
+          />
+        </div>
+        <div className="col-4">
+          <UnitSelect
+            id={"ingredients[" + i + "].unit"}
+            name={"ingredients[" + i + "].unit"}
+            label="Jednotka"
+          />
+        </div>
+      </>
+    );
+  };
+
   return (
     <Formik
       initialValues={{
@@ -34,6 +75,7 @@ function RecipeForm(props) {
         image: props.recipe.image,
         procedure: props.recipe.procedure,
         title: props.recipe.title,
+        ingredients: props.recipe.ingredients,
       }}
       validationSchema={Yup.object({
         author: Yup.string()
@@ -50,6 +92,10 @@ function RecipeForm(props) {
           160,
           "Musí obsahovat maximálně 160 znaků"
         ),
+        person: Yup.number()
+          .max(99, "Maximum je 99")
+          .min(1, "Minimum je 1")
+          .required("Povinné pole"),
         // image: Yup.object().shape({
         //   file: Yup.mixed()
         //     .nullable()
@@ -67,10 +113,43 @@ function RecipeForm(props) {
           .min(3, "Musí obsahovat alespoň 3 znaky")
           .max(64, "Musí obsahovat maximálně 64 znaků")
           .required("Povinné pole"),
+        // ingredients: Yup.array({
+        //   id: Yup.string().required("Povinné pole"),
+        //   amount: Yup.number()
+        //     .max(9999, "Maximum je 9999")
+        //     .min(1, "Minimum je 1")
+        //     .required("Povinné pole"),
+        //   unit: Yup.string()
+        //     .oneOf(
+        //       [
+        //         "g",
+        //         "ml",
+        //         "kg",
+        //         "l",
+        //         "pinch",
+        //         "tablespoon",
+        //         "teaspoon",
+        //         "piece",
+        //       ],
+        //       "Neznámá jednotka"
+        //     )
+        //     .required("Povinné pole"),
+        // })
+        //   .required("Povinné pole")
+        //   .min(1, "Musí obsahovat alespoň jednu ingredienci"),
       })}
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
-          alert(JSON.stringify(values, null, 2));
+          for (let i = 0; i < values.ingredients.length; i++) {
+            values.ingredients[i].amount =
+              values.ingredients[i].amount / values.person;
+          }
+          CookService.postRecipe(values).then((res) => {
+            if (res.status >= 400) {
+              console.log(res.json());
+            } else {
+            }
+          });
           setSubmitting(false);
         }, 500);
       }}
@@ -78,18 +157,69 @@ function RecipeForm(props) {
       {(formik) => (
         <div className="flex justify-content-center">
           <Form className="flex-column gap-2">
-            <CookImgCrop label="Obr8zek" id="crop" name="crop" />
-            <CookInput id="title" name="title" label="Název" />
-            <CategorySelect id="category" name="category" label="Kategorie" />
-            <CookInput id="author" name="author" label="Autor" />
-            <CookInput id="description" name="description" label="Popisek" />
-            <CookTextArea id="procedure" name="procedure" label="Postup" />
-            <Button
-              type="submit"
-              severity="secondary"
-              icon={<FontAwesomeIcon icon={faSave} className="mr-1" />}
-              label="Uložit"
-            />
+            <div className="grid">
+              <div className="col-12">
+                <FileUpload
+                  mode="basic"
+                  name="image"
+                  accept="image/*"
+                  maxFileSize={1000000}
+                  onSelect={(event) => customBase64Uploader(event)}
+                />
+              </div>
+              <div className="col-6">
+                <CookInput id="title" name="title" label="Název" />
+              </div>
+              <div className="col-6">
+                <CategorySelect
+                  id="category"
+                  name="category"
+                  label="Kategorie"
+                />
+              </div>
+              <div className="col-6">
+                <CookInput id="author" name="author" label="Autor" />
+              </div>
+              <div className="col-6">
+                <CookInput
+                  id="description"
+                  name="description"
+                  label="Popisek"
+                />
+              </div>
+              <div className="col-12">
+                <CookTextArea id="procedure" name="procedure" label="Postup" />
+              </div>
+              <div className="col-2">
+                <CookInput
+                  id="person"
+                  name="person"
+                  keyfilter="num"
+                  label="Počet osob"
+                />
+              </div>
+              <div className="col-4"></div>
+              <div className="col-6">
+                <Button
+                  type="button"
+                  severity="success"
+                  icon={<FontAwesomeIcon icon={faPlus} className="mr-1" />}
+                  label="Přidat ingredienci"
+                  onClick={(e) =>
+                    recipeIngredients.push(recipeIngredients.length + 1)
+                  }
+                  className="mb-3"
+                />
+              </div>
+
+              {recipeIngredients.map((v, i) => ingredientPanel(i))}
+              <Button
+                type="submit"
+                severity="secondary"
+                icon={<FontAwesomeIcon icon={faSave} className="mr-1" />}
+                label="Uložit"
+              />
+            </div>
           </Form>
         </div>
       )}

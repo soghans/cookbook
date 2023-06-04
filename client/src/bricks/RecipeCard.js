@@ -26,7 +26,7 @@ function RecipeCard(props) {
   };
   const header = (
     <div className="flex flex-wrap justify-content-center gap-2">
-      <img alt="card" src={props.recipe.image} />
+      <img alt={props.recipe.title} src={props.recipe.image} />
     </div>
   );
 
@@ -54,7 +54,7 @@ function RecipeCard(props) {
 
       <Dialog
         visible={recipeDetailDialog}
-        style={{ width: "32rem" }}
+        style={{ width: "70rem" }}
         breakpoints={{ "960px": "75vw", "641px": "90vw" }}
         header={props.recipe.title}
         modal

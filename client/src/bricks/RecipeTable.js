@@ -42,7 +42,7 @@ function RecipeTable() {
 
   useEffect(() => {
     CookService.getRecipes().then((data) => setRecipes(data));
-  }, []);
+  }, [recipes]);
 
   const deleteRecipe = () => {
     CookService.deleteRecipe(recipe.id).then((status) => {
@@ -167,7 +167,7 @@ function RecipeTable() {
   const imageBodyTemplate = (rowData) => {
     return (
       <img
-        src={`https://primefaces.org/cdn/primereact/images/product/${rowData.image}`}
+        src={rowData.image}
         alt={rowData.image}
         className="shadow-2 border-round"
         style={{ width: "64px" }}
@@ -307,10 +307,11 @@ function RecipeTable() {
 
       <Dialog
         visible={recipeDialog}
-        style={{ width: "32rem" }}
+        style={{ width: "70rem" }}
         breakpoints={{ "960px": "75vw", "641px": "90vw" }}
         header={dialogHeader}
         modal
+        id="new-recipe-dialog"
         className="p-fluid"
         onHide={hideDialog}
       >

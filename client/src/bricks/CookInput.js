@@ -7,7 +7,7 @@ const CookInput = ({ label, ...props }) => {
   const [field, meta] = useField(props);
   return (
     <>
-      <span className="p-float-label mt-5">
+      <span className="p-float-label">
         <InputText
           id={props.id}
           name={props.name}

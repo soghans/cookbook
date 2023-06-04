@@ -5,21 +5,25 @@ import { useField } from "formik";
 
 const CookInput = ({ label, ...props }) => {
   const [field, meta] = useField(props);
-  const categories = [
+  const units = [
     { name: "gram", code: "g" },
-    { name: "mililitr", code: "main course" },
-    { name: "Koktejl", code: "drink" },
-    { name: "Polévka", code: "soup" },
-    { name: "Předkrm", code: "starter" },
-    { name: "Svačina", code: "snack" },
+    { name: "mililitr", code: "ml" },
+    { name: "kilogram", code: "kg" },
+    { name: "litr", code: "l" },
+    { name: "kus", code: "ks" },
+    { name: "lžíce", code: "lžíce" },
+    { name: "lžička", code: "lžička" },
+    { name: "hrnek", code: "hrnek" },
+    { name: "špetka", code: "špetka" },
   ];
+
   return (
     <>
-      <span className="p-float-label mt-3">
+      <span className="p-float-label">
         <Dropdown
           inputId={props.id}
           name={props.name}
-          options={categories}
+          options={units}
           optionLabel="name"
           optionValue="code"
           {...field}

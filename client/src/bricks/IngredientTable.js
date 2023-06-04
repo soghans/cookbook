@@ -42,7 +42,7 @@ function IngredientTable() {
 
   useEffect(() => {
     CookService.getIngredients().then((data) => setIngredients(data));
-  }, []);
+  }, [ingredients]);
 
   const deleteIngredient = () => {
     CookService.deleteIngredient(ingredient.id).then((status) => {
@@ -106,12 +106,7 @@ function IngredientTable() {
         CookService.postIngredient(_ingredient).then(
           (res) => {
             if (res.ok) {
-              _ingredient.id = res.json().then((json) => {
-                json.id;
-              });
-              console.log(_ingredients);
               _ingredients.push(_ingredient);
-              console.log(_ingredients);
               toast.current.show({
                 severity: "success",
                 summary: "Úspěch",
