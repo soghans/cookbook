@@ -39,7 +39,8 @@ class RecipeDao {
       }
     }
     recipe.id = crypto.randomUUID();
-    recipe.created_at = new Date()
+    recipe.created_at = new Date();
+    recipe.status = "new";
     for (let i = 0; i < ingredientList.length; i++) {
       let ingredientRecipe = {}
       ingredientRecipe.id = crypto.randomUUID()
@@ -69,7 +70,7 @@ class RecipeDao {
       ingredientList[i].amount = riList[i].amount;
       ingredientList[i].unit = riList[i].unit;
     }
-     recipe.ingredients = ingredientList
+     recipe.ingredients = ingredientList;
     return recipe
   }
 
@@ -86,6 +87,31 @@ class RecipeDao {
       recipeList[recipeIndex] = {
         ...recipeList[recipeIndex],
         ...recipe,
+      };
+    }
+    await wf(
+      this._getStorageLocation(),
+      JSON.stringify(recipeList, null, 2)
+    );
+    return recipeList[recipeIndex];
+  }
+
+
+  async approveRecipe(recipe) {
+    let recipeList = await this._loadAllRecipes();
+    const recipeIndex = recipeList.findIndex(
+      (b) => b.id === recipe.id
+    );
+    if (recipeIndex < 0) {
+      throw new Error(
+        `recipe with given id ${recipe.id} not found`
+      );
+    } else {
+      let _recipe = recipeList[recipeIndex];
+      _recipe.status = recipe.status;
+      recipeList[recipeIndex] = {
+        ...recipeList[recipeIndex],
+        ..._recipe
       };
     }
     await wf(
@@ -118,7 +144,14 @@ class RecipeDao {
   }
 
   async listRecipes() {
-    return await this._loadAllRecipes();
+    let recipes = await this._loadAllRecipes();
+    let recipesList = [];
+    for (let i = 0; i < recipes.length; i++) {
+      if(recipes[i].status !== "new"){
+          recipesList.push(recipes[i]);
+      }
+    }
+    return recipesList;
   }
 
   async _loadAllRecipes() {

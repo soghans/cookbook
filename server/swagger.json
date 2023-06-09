@@ -430,6 +430,17 @@
         }
       }
     },
+    "ApproveRecipe": {
+      "required": ["id", "status"],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        }
+      }
+    },
     "RecipeIngredient": {
       "required": ["id", "amount", "unit"],
       "properties": {

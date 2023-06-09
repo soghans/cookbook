@@ -2,6 +2,7 @@
   {
     "author": "Marie",
     "category": "soup",
+    "status": "new",
     "description": "Základem této letní polévky je samá chutná zelenina - cibule, česnek, mrkev, brokolice a kapusta. Nechybí v ní těstovinová rýže, bazalkové pesto a strouhaný parmazán, které pokrm krásně dochutí.",
     "image": "https://ms3.ostium.cz/instance/web-recepty/jhqcNf1Q/h389w574t.jpg",
     "procedure": "1.Cibuli oloupejte, pokrájejte na tenké klínky a restujte asi minutu na troše oleje ve větším hrnci. Přidejte najemno nasekaný česnek a mrkev pokrájenou na kolečka. Restujte asi 5 minut na mírném ohni. 2.Zalijte vývarem, přidejte růžičky brokolice, na nudličky pokrájenou kapustu, těstoviny a pesto. Vařte ještě asi 5 minut, nebo dokud nebudou těstoviny uvařené na skus. Tip: Do polévky můžete přidat i cuketu, květák nebo kedlubny, jen je dávejte vařit ve správném pořadí, od nejpevnější po nejměkčí. 3. Polévku dochuťte solí a pepřem a jednotlivé porce na talířích zasypte strouhaným parmazánem. ",
@@ -12,6 +13,7 @@
   {
     "author": "Milan",
     "category": "main course",
+    "status": "approved",
     "description": "Vynikající večeře nebo vydatná svačina v podobě dozlatova opečených chlebů pokladených samými dobrotami. Nechybí na nich žampiony, špenát, slanina nai nastrouhaný čedar.",
     "image": "https://ms1.ostium.cz/instance/web-recepty/jDKl64C9/h389w574t.jpg",
     "procedure": "1. Slaninu pokrájejte na nudličky, žampiony očistěte a pokrájejte na plátky. Slaninu dejte vypéct na rozpálenou pánev takřka dokřupava. Pokud nepustí dost tuku, přilijte lžíci olivového oleje. Přidejte žampiony a krátce je orestujte, aby chytily barvu. Na závěr vsypte špenát, vše osolte, opepřete, dobře promíchejte a nechte zavadnout listy, minuta či dvě postačí. Směs odstavte z ohně a nechte trochu vychladnout. 2.Krajíce chleba potřete z obou stran olivovým olejem, dejte do trouby předehřáté na 180 °C a mírně dozlatova opečte z obou stran. 3. Mezitím v misce prošlehejte vejce, osolte je, opepřete a přidejte nahrubo nastrouhaný sýr a směs z pánve. Vše dobře promíchejte. 4. Směs navršte na předpečené krajíce a vraťte je do trouby. Pečte, dokud vejce neztuhnou a sýr se nerozteče, zabere to asi 5 minut. Podávejte ještě horké. ",
@@ -22,6 +24,7 @@
   {
     "author": "Jitka",
     "category": "salad",
+    "status": "approved",
     "description": "Do krabičky do práce nebo s sebou na piknik či k vodě zase můžete vzít rychlý těstovinový salát, který zasytí a chutná všem.",
     "image": "https://ms3.ostium.cz/instance/web-recepty/jKyDzLBj/h389w574t.jpg",
     "procedure": "1. Penne uvařte na skus (//al dente//). Slijte tuňáka, kukuřici, salát opláchněte a rukama natrhejte na menší kousky. 2. Smíchejte s těstovinami, jogurtem, olejem a chuť dotáhněte citronovou šťávou, solí a pepřem.",
@@ -32,6 +35,7 @@
   {
     "author": "Michal",
     "category": "main course",
+    "status": "approved",
     "description": "Rychlý a chutný oběd, případně večeře pro celou rodinu. Tak by se dalo popsat opečené vepřové maso podávané s bulgurem, pečenou dýní a růžičkovou kapustou. Na této dobrotě si jistě všichni pochutnají.    ",
     "image": "https://ms1.ostium.cz/instance/web-recepty/jKAbvs3i/h389w574t.jpg",
     "procedure": "1. Dýni dobře umyjte, rozkrojte, vydlabejte a pokrájejte na menší kostky. Růžičkovou kapustu očistěte a nakrájejte na poloviny. Rozložte na plech vyložený pečicím papírem, zalijte třemi lžícemi olivového oleje, osolte, opepřete a rukama promíchejte, aby se kousky obalily v oleji. Dejte do trouby předehřáté na 200 °C a pečte asi 20 minut. 2. Plátky krkovice potřete olivovým olejem, opepřete a nechte odpočinout při pokojové teplotě. 3.V hrnci zahřejte lžíci oleje, vsypte bulgur, krátce orestujte, zalijte dvojnásobným množstvím vody a osolte. Přiveďte k varu a na mírném ohni vařte zakryté, dokud se tekutina nevsákne. Bude to trvat asi 8 minut. Hotový bulgur načechrejte vidličkou. 4.Maso dejte na rozpálenou pánev a zprudka opečte, z každé strany asi 2 minuty, pak nechte pár minut odpočinout. Podávejte s pečenou zeleninou a bulgurem. ",
@@ -42,6 +46,7 @@
   {
     "author": "Petr",
     "category": "dessert",
+    "status": "approved",
     "description": "Patří k nejoblíbenějším zákuskům a můžete si ho dát snad v každé cukrárně. Zkuste si ho ale připravit sami doma. Není to tak těžké a barevně poskládat i ozdobit si ho můžete podle vlastní chuti.",
     "image": "https://ms2.ostium.cz/instance/web-recepty/jgw7cbZ2/h389w574t.jpg",
     "procedure": "1.Vejce s cukrem vyšleháme do husté pěny. Ručně vmícháme prosátou hladkou mouku a nakonec olej. Těsto nalijeme do formy a pečeme v troubě vyhřáté na 165 °C přibližně 45 minut. 2. Mezitím si připravíme rozvar. Vodu a cukr svaříme, dochutíme citronovou šťávou, rumem a rumovým a punčovým aroma. Rozvar rozdělíme na dvě části, jednu obarvíme žlutou a druhou červenou potravinářskou barvou. Oba rozvary udržujeme teplé. 3. Korpus po vychladnutí rozkrojíme podélně na 3 části. Prostřední díl necháme trochu silnější. Horní díl korpusu vrátíme do formy a potřeme polovinou marmelády. Prostřední díl rozkrájíme na pruhy, které střídavě namáčíme do rozvarů a vkládáme do formy na namazaný korpus. Pokud nám ještě nějaký rozvar zbude, můžeme ho ještě nalít do formy. Po zaplnění formy vše přiklopíme třetí částí korpusu, kterou jsme též potřeli marmeládou. Vše zatížíme a necháme do druhého dne odležet. 4.Punčový řez opatrně vyjmeme z formy a ozdobíme čokoládovou polevou připravenou podle návodu na obalu a lyofilizovaným ovocem se sušenými květy.",
@@ -52,6 +57,7 @@
   {
     "author": "Marina",
     "category": "drink",
+    "status": "approved",
     "description": "Očista těla je potřeba, tak proč ji neudělat tou nejchutnější cestou?",
     "image": "https://ms1.ostium.cz/instance/web-recepty/jeOpYhXl/h600w1024p.jpg",
     "procedure": "1.Omytý citron rozkrojíme a vymačkáme přes dlaň. 2. Do hrnečku s 0,2 dl horké vody vložíme sáček s čajem a necháme louhovat. 3. Do džbánu s 1,5l vody přidáme 2 lžíce brusinkového džusu a 2 lžíce citronové šťávy. 4.Po vylouhování vytáhneme sáček z hrnečku a pampeliškový čaj přilijeme ke směsi. Promícháme a můžeme podávat  ",
@@ -65,6 +71,7 @@
     "person": 2,
     "description": "Rychlý a chutný studený předkrm nebo lehký oběd v letních měsících",
     "category": "starter",
+    "status": "approved",
     "author": "Josef",
     "id": "2e734f96-e4c6-499b-aac8-40a9d3d09348",
     "image": "https://ms2.ostium.cz/instance/web-recepty/j1Ei34s2/h389w574t.jpg",
@@ -76,20 +83,10 @@
     "person": 2,
     "description": "Sladká i zdravá svačinka, která potěší děti i dospělé",
     "category": "snack",
+    "status": "approved",
     "author": "Radek",
     "id": "2e71722b-071c-4cf5-9441-76f43735621f",
     "image": "https://ms1.ostium.cz/instance/web-recepty/jBjIAr7i/h389w574t.jpg",
     "created_at": "2023-06-04T01:14:03.193Z"
-  },
-  {
-    "title": "eecsec",
-    "procedure": "sdvdscdsvsdv",
-    "person": 4,
-    "description": "",
-    "category": "soup",
-    "author": "sdcesf",
-    "id": "e212011b-95f9-450a-887b-a0ab529309c7",
-    "image": "",
-    "created_at": "2023-06-04T09:21:13.902Z"
   }
 ]
